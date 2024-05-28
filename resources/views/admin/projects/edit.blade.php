@@ -27,7 +27,7 @@
                 }
             @endphp
 
-            <form id="projectForm" action="{{ route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
+            <form id="projectForm" action="{{ route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data" class="bg-success-subtle px-3 pt-2 pb-3 rounded-2">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -50,6 +50,27 @@
                                 >{{ $type->name }}</option>
                             @endforeach
                     </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Tecnologie:</label>
+                    <div class="btn-group btn-group-sm" role="group">
+                        @foreach ($technologies as $technology)
+                            <input
+                                name="technologies[]"
+                                id="technology_{{ $technology->id }}"
+                                class="btn-check"
+                                autocomplete="off"
+                                type="checkbox"
+                                value="{{ $technology->id }}"
+                                @if(    $errors->any && in_array($technology->id, old('technologies',[]))
+                                    || !$errors->any() && $project->technologies->contains($technology))
+                                    checked
+                                @endif
+                            >
+                            <label class="btn btn-outline-success" for="technology_{{ $technology->id }}">{{ $technology->name }}</label>
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="mb-3">
