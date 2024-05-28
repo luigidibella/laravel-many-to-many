@@ -88,6 +88,10 @@ class ProjectController extends Controller
 
         if(array_key_exists('image', $form_data)){
 
+            if ($project->image) {
+                Storage::disk('public')->delete($project->image);
+            }
+
             $image_path = Storage::put('uploads', $form_data['image']);
             $original_name = $request->file('image')->getClientOriginalName();
             $form_data['image'] = $image_path;
@@ -104,6 +108,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if($project->image){
+            Storage::disk('public')->delete($project->image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('deleted', 'Il progetto' . ' "' . $project->title . '" ' . 'è stato eliminato.');
