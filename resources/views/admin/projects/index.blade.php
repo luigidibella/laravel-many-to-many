@@ -7,29 +7,31 @@
 @section('content')
     <h2 class="text-white">Elenco Progetti</h2>
 
+    @if (isset($_GET['toSearch']) && !empty(trim($_GET['toSearch'])))
+        <h6>Ricerca per: {{ trim($_GET['toSearch']) }} | Elementi trovati: {{ $count_search }}</h6>
+    @endif
+
     @if (session('deleted'))
-
-    <div class="alert alert-success" role="alert">
-        {{ session('deleted')}}
-    </div>
-
+        <div class="alert alert-success" role="alert">
+            {{ session('deleted')}}
+        </div>
     @endif
 
     <table class="table crud-table">
         <thead>
           <tr>
-            <th scope="col" class="bg-success-subtle">n°</th>
-            <th scope="col" class="bg-success-subtle">Titolo</th>
+            <th scope="col" class="bg-success-subtle"><a href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'id']) }}">n°</a></th>
+            <th scope="col" class="bg-success-subtle"><a href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'title']) }}">Titolo</a></th>
             <th scope="col" class="bg-success-subtle">Tipo</th>
             <th scope="col" class="bg-success-subtle">Tecnologie</th>
             <th scope="col" class="bg-success-subtle">Immagine</th>
-            <th scope="col" class="bg-success-subtle">Data</th>
+            <th scope="col" class="bg-success-subtle"><a href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'updated_at']) }}">Data</a></th>
             {{-- <th scope="col" class="bg-success-subtle">Descrizione</th> --}}
             <th scope="col" class="bg-success-subtle text-center">Azioni</th>
           </tr>
         </thead>
         <tbody>
-            @foreach ($projects as $item)
+            @forelse ($projects as $item)
             <tr>
               <th scope="row">{{ $item->id }}</th>
               <td>
@@ -67,7 +69,9 @@
                 </div>
               </td>
             </tr>
-            @endforeach
+            @empty
+                <h6>Nessun elemento trovato</h6>
+            @endforelse
         </tbody>
     </table>
 

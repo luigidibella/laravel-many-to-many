@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])
 
         // Rotte custom
         Route::get('type-projects', [TypeController::class, 'typeProjects'])->name('type_projects');
+        Route::get('orderby/{direction}/{column}', [ProjectController::class, 'orderby'])->name('orderby');
 
     });
 
