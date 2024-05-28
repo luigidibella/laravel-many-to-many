@@ -23,7 +23,8 @@ class ProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:100',
-            'text' => 'required|min:3|max:250'
+            'text' => 'required|min:3|max:250',
+            'image' => 'image|mimes:jpg,bmp,png|max:20480'
         ];
     }
 
@@ -37,6 +38,10 @@ class ProjectRequest extends FormRequest
 
             'title.max' => 'Il titolo deve contenere non piu di :max caratteri',
             'text.max' => 'La descrizione deve contenere non piu di :max caratteri',
+
+            'image.image' => 'Il file caricato deve essere un\'immagine',
+            'image.mimes' => 'L\'immagine caricata può essere solo in formato jpg o png',
+            'image.max' => 'L\'immagine caricata non può pesare più di :max kb',
         ];
     }
 }
