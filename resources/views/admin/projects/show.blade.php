@@ -9,7 +9,15 @@
         <h2>{{ $project->title }}</h2>
 
         @if ($project->type)
-        <h6>Categoria: <span class="badge text-bg-warning">{{ $project->type->name }}</span></h6>
+        <h6>Tipo: <span class="badge bg-success-subtle text-dark">{{ $project->type->name }}</span></h6>
+        @endif
+
+        @if (count($project->technologies) > 0)
+            <h6>Technologie:
+                @foreach ($project->technologies as $technology)
+                    <span class="badge rounded-pill text-bg-warning">{{ $technology->name }}</span>
+                @endforeach
+            </h6>
         @endif
 
         <img

@@ -20,15 +20,15 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.technologies.index') }}">
-                    <i class="fa-solid fa-tags"></i>
-                    <span>Gestione Tecnologie</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('admin.types.index') }}">
                     <i class="fa-solid fa-tags"></i>
                     <span>Gestione Tipi</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.technologies.index') }}">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>Gestione Tecnologie</span>
                 </a>
             </li>
             <li>

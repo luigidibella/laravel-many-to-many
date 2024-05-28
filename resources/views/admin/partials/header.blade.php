@@ -8,14 +8,14 @@
           </a>
           <div class="d-flex align-items-center">
               <form class="d-flex me-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca">
+                <button class="btn btn-outline-success" type="submit">Cerca</button>
               </form>
               <p class="pt-3 me-3">{{ Auth::user()->name }}</p>
               <form action="{{ route('logout') }}" method="POST">
                 @csrf
 
-                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i></button>
+                <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-right-from-bracket"></i></button>
               </form>
           </div>
         </div>

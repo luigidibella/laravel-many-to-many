@@ -21,6 +21,7 @@
             <th scope="col" class="bg-success-subtle">n°</th>
             <th scope="col" class="bg-success-subtle">Titolo</th>
             <th scope="col" class="bg-success-subtle">Tipo</th>
+            <th scope="col" class="bg-success-subtle">Tecnologie</th>
             <th scope="col" class="bg-success-subtle">Immagine</th>
             <th scope="col" class="bg-success-subtle">Data</th>
             {{-- <th scope="col" class="bg-success-subtle">Descrizione</th> --}}
@@ -35,8 +36,15 @@
                 {{ $item->title }}
                 <hr>
                 {{ $item->text }}
-            </td>
+              </td>
               <td> {{ $item->type?->name }} </td>
+              <td>
+                @forelse ($item->technologies as $technology)
+                    <span class="badge rounded-pill text-bg-warning">{{ $technology->name }}</span>
+                @empty
+                    <span>---</span>
+                @endforelse
+              </td>
               <td>
                 <img class="thumb m-0" src="{{ asset('storage/' . $item->image ) }}" alt="" onerror="this.src='/img/no-image.webp'">
               </td>
