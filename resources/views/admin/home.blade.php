@@ -19,6 +19,6 @@
       <p class="card-text">{{ $last_project->text }}</p>
       <a href="{{ route('admin.projects.show', $last_project) }}" class="btn btn-success">Vai al progetto</a>
     </div>
-  </div>
+</div>
 
 @endsection
