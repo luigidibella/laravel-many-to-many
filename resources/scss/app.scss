@@ -1,7 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 
+.d-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .text-success-subtle{
     color: #d1e7dd;
+}
+
+.text-petrolium{
+    color: #04635c;
 }
 
 header{
