@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -14,9 +15,9 @@ class UserTableSeeder extends Seeder
     public function run(): void
     {
         $new_item = new User();
-        $new_item->name = 'Jiji';
-        $new_item->email = 'jiji@admin.it';
-        $new_item->password = '$2y$10$/8gvf8w.Ui3YaGIUke5c5.qKYHz1IW2lIR1jb/psOE9u3Sj.9zVuS';
+        $new_item->name = 'admin';
+        $new_item->email = 'admin@admin.it';
+        $new_item->password = Hash::make('12345678');
         $new_item->save();
     }
 }
